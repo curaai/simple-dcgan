@@ -12,7 +12,7 @@ def get_noise(batch_size, n_noise):
 
 
 def comon_nyan(batch_size):
-    rand_mask = np.random.choice(500, batch_size, replace=False)
+    rand_mask = np.random.choice(1000, batch_size, replace=False)
     return images[rand_mask]
 
 
@@ -21,17 +21,17 @@ if __name__ == '__main_':
 
 if __name__ == '__main__':
     total_epoch = 200
-    batch_size = 10
+    batch_size = 20
     learning_rate = 0.0002
 
-    total_batch = int(500 / batch_size)
+    total_batch = int(1000 / batch_size)
 
     # about training image, (128, 128, 3) 이미지
     n_length = 64
     n_channel = 3
 
     # noise vector dimension
-    n_noise = 100
+    n_noise = 200
 
     G = Generator('G', batch_size)
     D = Discriminator('D', batch_size)
@@ -45,6 +45,8 @@ if __name__ == '__main__':
     real_D = D.discriminate(data_x)
     fake_D = D.discriminate(data_g)
 
+    # loss_D = -tf.reduce_mean(tf.log(real_D) + tf.log(1-fake_D))
+    # loss_G = -tf.reduce_mean(tf.log(fake_D))
     loss_D = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=real_D, labels=tf.ones_like(real_D))) \
              + tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=fake_D, labels=tf.zeros_like(fake_D)))
     loss_G = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=fake_D, labels=tf.ones_like(fake_D)))

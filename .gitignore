@@ -181,4 +181,5 @@ venv.bak/
 
 dump.pkl
 cats.pkl
+samples/
 new_cat/
