@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/simple-dcgan.iml" filepath="$PROJECT_DIR$/.idea/simple-dcgan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../simple-gan/.idea/simple-gan.iml" filepath="$PROJECT_DIR$/../simple-gan/.idea/simple-gan.iml" />
+    </modules>
+  </component>
+</project>
